@@ -1,4 +1,3 @@
-LunArrest.github.io
-===================
+LunArrest's Blog
 
-20141231
+Based on Jekyll and Github Pages
