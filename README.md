@@ -1,3 +1,3 @@
-LunArrest's Blog
+# LunArrest's Blog
 
-Based on Jekyll and Github Pages
+Published with [Jekyll](http://jekyllrb.com/) and [Github Pages]((http://pages.github.com/))
