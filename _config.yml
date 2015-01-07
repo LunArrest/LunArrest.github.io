@@ -1,1 +1,4 @@
 highlighter: pygments
+paginate: 15
+paginate_path: "/page:num"
+github_username: LunArrest
