@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: liquid 模板语言语法学习笔记
 ---
 

@@ -2,11 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>test</title>
+        <title>{{ page.title }}</title>
     </head>
     <body>
-          {{ page.title }}
-          {{ page.date }}
           {{ content }}
     </body>
+    {% include footer.html %}
 </html>

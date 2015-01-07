@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: markdown语法学习笔记
 ---
 

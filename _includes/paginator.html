@@ -1,0 +1,41 @@
+<!-- paginator -->
+<div id="home-pagination" class="pagination">
+  {% if paginator.previous_page %}
+    <p class="home-previous">
+      {% if paginator.previous_page == 1 %}
+        <a href="/">&lt;上一页</a>
+      {% else %}
+        <a href="{{ paginator.previous_page_path }}">&lt;上一页</a>
+      {% endif %}
+    </p>
+  {% else %}
+    <p class="home-previous disabled">
+      <span>&lt;上一页</span>
+    </p>
+  {% endif %}
+
+  {% if paginator.page == 1 %}
+    <span class="current-page">1</span>
+  {% else %}
+    <a href="/">1</a>
+  {% endif %}
+
+  {% for count in (2..paginator.total_pages) %}
+    {% if count == paginator.page %}
+      <span class="current-page">{{ count }}</span>
+    {% else %}
+      <a href="/page{{ count }}">{{ count }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <p class="home-next">
+      <a href="{{ paginator.next_page_path }}">下一页&gt;</a>
+    </p>
+  {% else %}
+    <p class="home-next disabled">
+      <span>下一页&gt;</span>
+    </p>
+  {% endif %}
+  (共{{ paginator.total_posts }}篇)
+</div>

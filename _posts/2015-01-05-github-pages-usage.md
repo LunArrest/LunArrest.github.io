@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: github pages 学习使用笔记
 ---
 1. 访问<http://rubyinstaller.org/downloads>，下载windows环境的rubyinstaller，勾选添加到环境变量，安装。ruby安装完毕。
