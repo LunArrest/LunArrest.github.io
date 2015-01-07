@@ -1,5 +1,10 @@
 <footer class="site-info">
    <div id＝"footer-content">
-     ©2013-2015 <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a> | Powered by <a href="http://jekyllrb.com/" >Jekyll</a> | Hosted on <a href="https://www.github.com" >Github</a>
+   	{% if site.github_username %}
+    ©2013-2015 <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a>
+    {% else %}
+    ©2013-2015 LunArrest
+    {% endif %}
+      | Powered by <a href="http://jekyllrb.com/" >Jekyll</a> | Hosted on <a href="https://www.github.com" >Github</a> | Published with <a href="https://pages.github.com/" >GitHub Pages
    </div>
 </footer>
