@@ -50,3 +50,18 @@ Liquid is a template engine which was crafted for very specific requirements
  * split - 将一串字符串根据匹配模式分割成数组，如 {{ "a~b" | split:~ }} #=> ['a','b']
  * modulo - 取余，如 {{ 3 | modulo:2 }} #=> 1
 {% endraw %}
+
+## Tags
+
+{% raw %}
+ * assign - 将一些值赋给一个变量
+ * capture - 块标记，把一些文本捕捉到一个变量中
+ * case - 块标记，标准的 case 语句
+ * comment - 块标记，将一块文本作为注释
+ * cycle - Cycle 通常用于循环轮换值，如颜色或 DOM 类
+ * for - 用于For循环
+ * if - 用于if/else条件判断
+ * include - 包含其他的模板
+ * raw - 暂时性的禁用的标签的解析
+ * unless - if 语句的简版
+{% endraw %}
