@@ -1,6 +1,8 @@
 ---
 layout: post
 title: github pages 学习使用笔记
+description: 使用Github pages 以及jekyll搭建个人页面。
+tags: github pages
 ---
 1. 访问<http://rubyinstaller.org/downloads>，下载windows环境的rubyinstaller，勾选添加到环境变量，安装。ruby安装完毕。
 2. gem source a <http://ruby.taobao.org/> 增加淘宝的ruby源
