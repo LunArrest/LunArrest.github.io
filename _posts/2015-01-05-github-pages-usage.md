@@ -5,7 +5,7 @@ description: 使用Github pages 以及jekyll搭建个人页面。
 tags: github pages
 ---
 1. 访问<http://rubyinstaller.org/downloads>，下载windows环境的rubyinstaller，勾选添加到环境变量，安装。ruby安装完毕。
-2. gem source a <http://ruby.taobao.org/> 增加淘宝的ruby源
+2. gem source -a <http://ruby.taobao.org/> 增加淘宝的ruby源
 3. gem install bundler，bundler安装完毕
 4. 访问<http://rubyinstaller.org/downloads>，下载Development Kit，解压到‘解压目录’，并配置环境变量
 5. cmd，cd ‘解压目录’
