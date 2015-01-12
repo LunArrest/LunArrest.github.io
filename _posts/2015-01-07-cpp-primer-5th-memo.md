@@ -40,9 +40,11 @@ starting with an *open curly brace* and ending with a *close curly*）
 
  * C++包含大量的标准库用于提供IO功能，而并非定义相关的输入输出语句。
  * iostream 定义了四种IO对象：  
+
  	1. 标注输入流：istream类型的对象cin（standard input）  
  	2. 标准输出流：ostream类型的对象cout（standard output）  
  	3. cerr以及clog，通常将cerr当作标准错误流（standard error）用于警告和错误信息（warning and error messages），clog用于程序运行时的普通信息（general information）。  
+
 
 {% highlight C++ %}
 #include <iostream>
@@ -56,3 +58,8 @@ int main()
 	return 0;
 }
 {% endhighlight %}
+
+{% highlight C++ %} #include <iostream> {% endhighlight %} 告诉编译器我们想要使用iostream库。用尖括号（angle brackets）括住的部分为头部（header）
+
+ * #include必须单独写一行
+ * 头文件名称必须与#include在同一行
