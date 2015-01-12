@@ -59,7 +59,6 @@ int main()
 }
 {% endhighlight %}
 
-{% highlight C++ %} #include <iostream> {% endhighlight %} 告诉编译器我们想要使用iostream库。用尖括号（angle brackets）括住的部分为头部（header）
-
- * #include必须单独写一行
- * 头文件名称必须与#include在同一行
+ * \#include <iostream> 告诉编译器我们想要使用iostream库。用尖括号（angle brackets）括住的部分为头部（header）  
+ * \#include必须单独写一行  
+ * 头文件名称必须与\#include在同一行  
