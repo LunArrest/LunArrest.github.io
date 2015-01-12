@@ -29,3 +29,30 @@ C++ Primer第五版这本书在编写的时候（2012年7月），常用的编�
 ## Chapter 1. Getting Started（搞起来）
 
 ### 1.1. Writing a Simple C++ Program
+
+ * 每个C++程序都包含一个或者多个函数（*functions*），其中的一个必须叫做*main*。
+ * 一个函数定义包含四个元素：一个返回值类型（*a return type*），一个函数名称（*a function name*），一个被括号括住的可为空的参数列表（a possibly empty *parameter list* enclosed in *parentheses*），以及一个函数体（*function body*）
+ * 函数体是一块由左大括号开始，右大括号截止的语句块（the function body, is a block of statements
+starting with an *open curly brace* and ending with a *close curly*）
+ * 分号标志着大部分C++语句的截止（*Semicolons* mark the end of most statements in C++.）
+
+### 1.2. A First Look at Input/Output
+
+ * C++包含大量的标准库用于提供IO功能，而并非定义相关的输入输出语句。
+ * iostream 定义了四种IO对象：  
+ 	1. 标注输入流：istream类型的对象cin（standard input）  
+ 	2. 标准输出流：ostream类型的对象cout（standard output）  
+ 	3. cerr以及clog，通常将cerr当作标准错误流（standard error）用于警告和错误信息（warning and error messages），clog用于程序运行时的普通信息（general information）。  
+
+{% highlight C++ %}
+#include <iostream>
+int main()
+{
+	std::cout << "Enter two numbers:" << std::endl;
+	int v1 = 0, v2 = 0;
+	std::cin >> v1 >> v2;
+	std::cout << "The sum of " << v1 << " and " << v2
+	<< " is " << v1 + v2 << std::endl;
+	return 0;
+}
+{% endhighlight %}
