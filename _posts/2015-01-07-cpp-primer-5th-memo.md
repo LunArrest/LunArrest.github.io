@@ -91,7 +91,7 @@ int main()
 
 #### 1.4.1.The for Statement（for语法）  
 
- * 每条for语句都包含两部分：语句头和语句体（a header and a body）。语句头决定了语句体多久执行一次（controls how often the body is executed）；  
+ * 每条for语句都包含两部分：语句头和语句体（a header and a body）。语句头决定了语句体多久执行一次（controls how often the body is executed）。  
  * 语句头包含三部分：初始化语句（an init-statement），条件（a condition），以及一条表达式（an expression）。  
  * 初始化语句中定义的变量只存在于该for循环中（The variable val exists only inside the for），for循环结束后不能再使用该变量。  
  * 初始化语句只在进入for循环时执行一次（The init-statement is executed only once, on entry to the for）。  
@@ -136,4 +136,123 @@ while (std::cin >> value) 如果流有效（在流没有遇到错误的时候）
 
 
 #### 1.4.4. The if Statement（if 语句）
+
+ * 与while 语句类似，if判断（evaluates）一个条件，如果条件为true（condition is true），将执行紧接着条件语句的，由左大括号开始、右大括号截止的语句块。  
+
+
+### Key Concept: Indentation and Formatting of C++ Programs（C++程序的缩进及格式）
+
+ * 有无数关于什么样的格式才是C/C++程序正确格式的争论(Endless debates occur as to the right way to format C or C++ programs.)。  
+ * 当你选择一种格式风格的时候，需要考虑它会给可读性和理解带来怎样的影响（When you choose a formatting style, think about how it affects readability and comprehension）。  
+
+
+### 1.5. Introducing Classes（关于类的介绍）  
+
+ * 在C++中，我们通过定义类（defining a class）来定义数据结构（data structures）。  
+ * 一个类定义了一个包含了一系列与自身相关的操作（a collection of operations that are related to that type）的独立的类型。  
+ * 类机制是C++中最最最最中要的功能特性，也是当初设计C++语言的最初目标（可以自然地像内建类型一样定义自定义类型）。  
+ * 自定义的头文件通常带有".h"后缀（suffix），当然也有一部分程序猿使用".H" ，".hpp"，".hxx"作为后缀。标准库的头文件（the standard library headers）通常（typically）没有任何后缀。  
+ * we are saying that item is an object of type Sales_item. We often contract the phrase “an object of type Sales_item” to “a Sales_item object” or even more simply to “a Sales_item.”（英语的关于类和类型的称呼，就不翻译了）  
+ * 通过重复的（repeatedly）人工输入输出来测试程序是极其蛋疼（tedious）的。可以利用文件重定向（File Redirection）来测试程序。  
+
+
+#### 1.5.1. The Sales_item Class （没干货，略）
+
+
+#### 1.5.2. A First Look at Member Functions（メンバー関数を見るのは始めてだ）
+
+代码如：   
+
+{% highlight C++ %}
+#include <iostream>
+#include "Sales_item.h"
+int main()
+{
+	Sales_item item1, item2;
+	std::cin >> item1 >> item2;
+	// first check that item1 and item2 represent the same book
+	C++ Primer, Fifth Edition
+	if (item1.isbn() == item2.isbn()) {
+		std::cout << item1 + item2 << std::endl;
+		return 0; // indicate success
+	} else {
+		std::cerr << "Data must refer to same ISBN"
+		<< std::endl;
+		return -1; // indicate failure
+	}
+}
+{% endhighlight %}
+
+ * 成员函数是做为类的一部分而定义的。
+ * item1.isbn 通过使用点操作符（the “.” operator）来表明 “isbn”是一个叫做“item1”对象的成员。
+ * 点操作符只应用于类的对象上（The dot operator applies only to objects of class type）。其左运算对象必须是一个类的对象，其右运算对象必须是该类对象的成员。
+
+
+### 1.6. The Bookstore Program （没干货，略）
+
+
+### Defined Terms（术语）
+
+ * argument
+ * assignment
+ * block
+ * buffer
+ * built-in type
+ * cerr
+ * cin 
+ * class
+ * class type
+ * clog
+ * comments
+ * condition
+ * cout
+ * curly brace
+ * data structure
+ * edit-compile-debug
+ * end-of-file
+ * expression
+ * for statement
+ * function
+ * function body
+ * function name
+ * header
+ * if statement
+ * initialize
+ * iostream
+ * istream
+ * main
+ * manipulator
+ * member function
+ * method
+ * namespace
+ * ostream
+ * parameter list
+ * return type
+ * source file
+ * standard error
+ * standard input 
+ * standard library
+ * standard output
+ * statement
+ * std
+ * string literal
+ * uninitialized variable
+ * variable
+ * while statement
+ * () operator
+ * ++ operator
+ * += operator
+ * . operator
+ * :: operator
+ * = operator
+ * -- operator
+ * << operator
+ * >> operator
+ * \# include
+ * == operator
+ * != operator
+ * <= operator
+ * < operator
+ * >= operator
+ * > operator
 
