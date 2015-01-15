@@ -247,12 +247,12 @@ int main()
  * = operator
  * -- operator
  * << operator
- * >> operator
+ * \>\> operator
  * \# include
  * == operator
  * != operator
  * <= operator
  * < operator
- * >= operator
- * > operator
+ * \>= operator
+ * \> operator
 
