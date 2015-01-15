@@ -73,17 +73,67 @@ int main()
  * std::cout和std::endl的前缀std::表明（indicates）名称cout以及endl是定义在命名空间（namespace）std中的。
  * 命名空间能让我们避免（avoid）不经意地（inadvertent）定义和使用了与库中相同的命名（name）导致的冲突（collisions）。
 
-### 1.3. A Word about Comments（一言以蔽C++注释）
- * C++有两种注释：单行注释和多行注释（single-line and paired）。
- * 单行注释以双斜线（a double slash）开始，以换行符（newline）截止。
- * 多行注释由一对分隔符包裹（/\* 以及 \*/），由C语言继承而来。
- * 多行注释中不能嵌套多行注释（Comment Pairs Do Not Nest）
+### 1.3. A Word about Comments（一言以蔽C++注释）  
+ * C++有两种注释：单行注释和多行注释（single-line and paired）。  
+ * 单行注释以双斜线（a double slash）开始，以换行符（newline）截止。  
+ * 多行注释由一对分隔符包裹（/\* 以及 \*/），由C语言继承而来。  
+ * 多行注释中不能嵌套多行注释（Comment Pairs Do Not Nest）  
 
-### 1.4. Flow of Control（控制流程）
+### 1.4. Flow of Control（控制流程）  
 
-#### 1.4.1. The while Statement（while语法）
- * while语句在给出的条件（a given condition）为true时循环地执行（repeatedly executes）代码片段（a section of code）
+#### 1.4.1. The while Statement（while语法）  
+ * while语句在给出的条件（a given condition）为true时循环地执行（repeatedly executes）代码片段（a section of code）  
 
-复合赋值运算符（compound assignment operator），如 += 运算符。
-前缀自增运算符（prefix increment operator），如 ++val 运算符。
-赋值运算符（assignment operator），如 = 
+复合赋值运算符（compound assignment operator），如 += 运算符。  
+前缀自增运算符（prefix increment operator），如 ++val 运算符。  
+赋值运算符（assignment operator），如 =   
+
+
+#### 1.4.1.The for Statement（for语法）  
+
+ * 每条for语句都包含两部分：语句头和语句体（a header and a body）。语句头决定了语句体多久执行一次（controls how often the body is executed）；  
+ * 语句头包含三部分：初始化语句（an init-statement），条件（a condition），以及一条表达式（an expression）。  
+ * 初始化语句中定义的变量只存在于该for循环中（The variable val exists only inside the for），for循环结束后不能再使用该变量。  
+ * 初始化语句只在进入for循环时执行一次（The init-statement is executed only once, on entry to the for）。  
+ * 条件语句每循环完一次判断一次（The condition is tested each time through the loop），循环会一直进行直至条件判断失败（The loop continues until the condition fails）。  
+ * 表达式在每次for语句体执行完后执行一次。
+
+{% highlight C++ %}
+#include <iostream>
+int main()
+{
+	int sum = 0;
+	// sum values from 1 through 10 inclusive
+	for (int val = 1; val <= 10; ++val)
+	sum += val; // equivalent to sum = sum + val
+	std::cout << "Sum of 1 to 10 inclusive is "
+	<< sum << std::endl;
+	return 0;
+}
+{% endhighlight %}
+
+#### 1.4.3. Reading an Unknown Number of Inputs（从输入中读取未知数字）   
+
+{% highlight C++ %}
+#include <iostream>
+int main()
+{
+	int sum = 0, value = 0;
+	// read until end-of-file, calculating a running total of all values read
+	while (std::cin >> value)
+	sum += value; // equivalent to sum = sum + value
+	std::cout << "Sum is: " << sum << std::endl;
+	return 0;
+}
+{% endhighlight %}
+
+while (std::cin >> value) 如果流有效（在流没有遇到错误的时候），即判定成功（true）。当我们输入一个EOF（end-of-file）或者非法的输入（输入的并非整数）时，输入流将失效。一个处于失效状态的输入流将导致条件判断为false。
+
+
+### 如何从键盘中输入EOF：
+ * Windows 下 为Ctrl + z 之后 回车键   
+ * Unix系统下 通常为Ctrl + d   
+
+
+#### 1.4.4. The if Statement（if 语句）
+
