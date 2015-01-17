@@ -4,6 +4,8 @@ title: liquid 模板语言语法学习笔记
 ---
 
 ## 简介
+
+### 参考资料
 [Liquid Home](https://github.com/Shopify/liquid/wiki "Liquid Home") 
 [Liquid for Designers](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers "Liquid for Designers") 
 [Liquid for Programmers](https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers "Liquid for Programmers") 
