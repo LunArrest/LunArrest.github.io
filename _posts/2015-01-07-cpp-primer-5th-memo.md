@@ -193,66 +193,68 @@ int main()
 
 ### Defined Terms（术语）
 
- * argument
- * assignment
- * block
- * buffer
- * built-in type
- * cerr
- * cin 
- * class
- * class type
- * clog
- * comments
- * condition
- * cout
- * curly brace
- * data structure
- * edit-compile-debug
- * end-of-file
- * expression
- * for statement
- * function
- * function body
- * function name
- * header
- * if statement
- * initialize
- * iostream
- * istream
- * main
- * manipulator
- * member function
- * method
- * namespace
- * ostream
- * parameter list
- * return type
- * source file
- * standard error
- * standard input 
- * standard library
- * standard output
- * statement
- * std
- * string literal
- * uninitialized variable
- * variable
- * while statement
- * () operator
- * ++ operator
- * += operator
- * . operator
- * :: operator
- * = operator
- * -- operator
- * << operator
- * \>\> operator
- * \# include
- * == operator
- * != operator
- * <= operator
- * < operator
- * \>= operator
- * \> operator
+ * argument：传递给函数的值  
+ * assignment：移除（obliterate）一个对象的当前值并用一个新的值替换  
+ * block：一系列的零（sequence of zero）或者由大括号括住的语句。  
+ * buffer：一块用于保存数据（hold data）的存储区域（A region of storage）。输出缓冲区需要显式刷新（flush），以促使缓冲区的内容写出去。一般来讲，从cin中读取时会刷新cout；cout也通常会在程序结束时刷新。  
+ * built-in type：由语言本身定义好的类型，如int。  
+ * cerr：与标准错误流相关联的ostream对象，通常写向跟标准输出流相同的设备。一般来讲，向cerr中写是没有缓冲区的。  
+ * character string literal：字符串（string literal）的另一种术语。  
+ * cin：用于从标准输入流中读取数据的instream对象。  
+ * class：类，用于定义自己的数据结构和相关的操作的设施（facility，真心不知道怎么翻译）。  
+ * class type：类（class）的类型（type），类型的名字就是类的名字。  
+ * clog：与标准错误流相关联的ostream对象。一般来讲，向clog中写是有缓冲区的。通常用于向日志文件中记录成语执行的信息。  
+ * comments：注释，程序文本中被编译器忽略的部分。  
+ * condition：一个用于判断为真或者假的表达式。0是false，非零代表真。  
+ * cout：用于向标准输出流中写数据的ostream对象。  
+ * curly brace：大括号用于给语句块定界（Curly braces delimit blocks）。  
+ * data structure：一个有逻辑的的数据和对该数据的操作的组合（a logical grouping of data and operations on that data）。  
+ * edit-compile-debug：让程序能正常运行的处理。  
+ * end-of-file：系统指定的用于表明没有其余的输入内容到文件的标记符。  
+ * expression：运算（computation）中的最小单位。一条表达式包含一个或者多个操作数以及通常一个或者多个操作符。表达式用于得出一个结果。  
+ * for statement：提供循环执行的循环语句。  
+ * function：被命名的一些运算（Named unit of computation）。  
+ * function body：定义函数的表现特征的语句块。  
+ * function name：用于区分函数和调用函数的名称。 
+ * header：Mechanism whereby the definitions of a class or other names are made available to multiple programs.   
+ * if statement：Conditional execution based on the value of a specified condition.  
+ * initialize：在创建对象的时候给他一个初始值。
+ * iostream：Header that provides the library types for stream-oriented input and output.  
+ * istream：Library type that providing stream-oriented input.  
+ * library type：库类型，类似istream，由标准库定义的类型。  
+ * main：C++程序执行时，系统调用的入口函数。
+ * manipulator：Object, such as std::endl, that when read or written "manipulates" the stream itself（不好解释...）。  
+ * member function：类中定义的操作。  
+ * method：成员函数的同义词。  
+ * namespace：C++的机制，用于将在一个库中定义的名称放在一个单独的地方。  
+ * ostream：Library type that providing stream-oriented output.  
+ * parameter list：函数定义的一部分，用于指定该函数可以使用的参数。  
+ * return type：函数返回值的类型。  
+ * source file：术语，用来描述包含C++程序的文件。  
+ * standard error：Output stream used for error reporting.  
+ * standard input：Input stream usually associated with the window in which the program executes.  
+ * standard library：C++编译器必须支持的一套类型和函数的集合。
+ * standard output：Output stream usually associated with the window in which the program executes.  
+ * statement：当程序运行时，决定发生什么响应的部分（A part of program that specifies an action to take place when then program is executed）。  
+ * std：标注库的命名空间。  
+ * string literal：一系列由引号包含的0或者更多字符。  
+ * uninitialized variable：没有给出是值的变量。
+ * variable： 一个有名称的对象。  
+ * while statement：Iteration statement that provides iterative execution so long as a specified condition is true.  
+ * () operator：调用操作符（call operator）  
+ * ++ operator：增量操作符（increment operator）  
+ * += operator：加复合赋值运算符  
+ * . operator：点运算符，用于访问对象成员  
+ * :: operator：范围运算符，用于访问命名空间中的名称。
+ * = operator：赋值预算符  
+ * -- operator：减量运算符（decrement operator）  
+ * << operator：输出运算符  
+ * \>\> operator：输入运算符  
+ * \# include：Directive that makes code in a header available to a program.
+ * == operator：等于操作符（the equality operator）  
+ * != operator：不等于操作符（the inequality operator）  
+ * <= operator：小于等于操作符（the less-than-or-equal operator）  
+ * < operator：小于操作符（the less-than operator）  
+ * \>= operator：大于等于操作符（the greater-than-or-equal operator）  
+ * \> operator：大宇操作符（the greater-than operator）  
 
