@@ -61,3 +61,136 @@ tags: github pages
 
 #### 参考网址：  
  * <http://stackoverflow.com/questions/8985925/how-to-control-what-version-of-python-is-run-when-double-clicking-a-file>
+
+
+#### Pygments支持的语法高亮：
+
+Programming languages（编程语言）  
+
+ * ActionScript
+ * Ada
+ * ANTLR
+ * AppleScript
+ * Assembly (various)
+ * Asymptote
+ * Awk
+ * Befunge
+ * Boo
+ * BrainFuck
+ * C, C++
+ * C#
+ * Clojure
+ * CoffeeScript
+ * ColdFusion
+ * Common Lisp
+ * Coq
+ * Cryptol (incl. Literate Cryptol)
+ * Cython
+ * D
+ * Dart
+ * Delphi
+ * Dylan
+ * Erlang
+ * Factor
+ * Fancy
+ * Fortran
+ * F#
+ * GAP
+ * Gherkin (Cucumber)
+ * GL shaders
+ * Groovy
+ * Haskell (incl. Literate Haskell)
+ * IDL
+ * Io
+ * Java
+ * JavaScript
+ * LLVM
+ * Logtalk
+ * Lua
+ * Matlab
+ * MiniD
+ * Modelica
+ * Modula-2
+ * MuPad
+ * Nemerle
+ * Nimrod
+ * Objective-C
+ * Objective-J
+ * Octave
+ * OCaml
+ * PHP
+ * Perl
+ * PovRay
+ * PostScript
+ * PowerShell
+ * Prolog
+ * Python 2.x and 3.x (incl. console sessions and tracebacks)
+ * REBOL
+ * Red
+ * Redcode
+ * Ruby (incl. irb sessions)
+ * Rust
+ * S, S-Plus, R
+ * Scala
+ * Scheme
+ * Scilab
+ * Smalltalk
+ * SNOBOL
+ * Tcl
+ * Vala
+ * Verilog
+ * VHDL
+ * Visual Basic.NET
+ * Visual FoxPro
+ * XQuery
+ * Zephir </ul>
+
+Template languages（模板语言）
+
+ * Cheetah templates
+ * Django / Jinja templates
+ * ERB (Ruby templating)
+ * Genshi (the Trac template language)
+ * JSP (Java Server Pages)
+ * Myghty (the HTML::Mason based framework)
+ * Mako (the Myghty successor)
+ * Smarty templates (PHP templating)
+ * Tea
+
+Other markup（其他标记语言，说好的YAML不是标记语言呢？）
+
+ * Apache config files
+ * Bash shell scripts
+ * BBCode
+ * CMake
+ * CSS
+ * Debian control files
+ * Diff files
+ * DTD
+ * Gettext catalogs
+ * Gnuplot script
+ * Groff markup
+ * HTML
+ * HTTP sessions
+ * INI-style config files
+ * IRC logs (irssi style)
+ * Lighttpd config files
+ * Makefiles
+ * MoinMoin/Trac Wiki markup
+ * MySQL
+ * Nginx config files
+ * POV-Ray scenes
+ * Ragel
+ * Redcode
+ * ReST
+ * Robot Framework
+ * RPM spec files
+ * SQL, also MySQL, SQLite
+ * Squid configuration
+ * TeX
+ * tcsh
+ * Vim Script
+ * Windows batch files
+ * XML
+ * XSLT
+ * YAML
