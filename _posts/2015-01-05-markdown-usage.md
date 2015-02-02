@@ -5,6 +5,11 @@ title: markdown语法学习笔记
 
 Markdown语法参考：       <http://wowubuntu.com/markdown/>
 
+Markdown编辑器：
+
+ 1. [markdownpad] 功能强大的md编辑器
+ 2. [sublimetext] 功能强大的文本编辑器
+
 ## 简介
 
  * Markdown的目标是实现“易读易写”，成为一种适用于网络的书写语言。
@@ -241,3 +246,7 @@ __文本5__
 [baidu]: <http://www.baidu.com/> "baidu"
 
 [markdown]: http://wowubuntu.com/markdown/
+
+[markdownpad]: http://markdownpad.com/ "markdownpad"
+
+[sublimetext]: http://www.sublimetext.com/ "sublimetext"
