@@ -82,3 +82,36 @@ last = *ia + 4; // last = 4, equivalent to ia [0] + 4
 cin >> v1 >> v2; // read into v1 and then into v2
 {% endhighlight %}
 
+#### 4.1.3 Order of Evaluation(求值顺序、执行顺序)
+
+优先级指定了操作数是如何组合的，但是并没有明确说明操作数的求值顺序。在大多数情况下，这种顺序是很大程度上未指明的（In most cases, the order is largely unspecified.）。
+
+比如：
+
+{% highlight C++ %}
+int i = f1() * f2();
+{% endhighlight %}
+
+我们知道在乘法之前，f1和f2一定会被调用，但是我们无从知道究竟是f1还是f2先被调用（we have no way of knowing whether f1 will be called before f2 or vice versa）。
+
+对于那些没有指定求值顺序的操作符，当在一个表达式中改变同一个对象时，会发生错误。这样做的表达式的行为是未定义的。如：
+
+{% highlight C++ %}
+int i = 0;
+cout << i << " " << ++i << endl; // undefined
+{% endhighlight %}
+
+输出操作符并不保证它的操作数是如何被运算的，编译器可能先运算++i也有可能先运算i，因此该段程序的行为是未定义的。
+
+Advice: Managing Compound Expressions（关于管理复合表达式的建议）：
+
+1. 当你不确定（优先级）时，使用括号来强制让程序的逻辑变成你想要的样子（When in doubt, parenthesize expressions to force the grouping that the logic of your program requires）。
+2. 如果你需要改变一个操作数的值，不要在同一个表达式中再使用该操作数（If you change the value of an operand, don’t use that operand elsewhere in the same expresion）。
+
+### 4.2. Arithmetic Operators(算术操作符、运算符)
+
+一元算术运算符的优先级高于乘/除运算符，乘/除运算符优先级高于二元加/减运算符。这些运算符都是左结合的（left associative），意味着，当优先级相同时从左到右组织（group left to right）。如图所示：
+
+![arithmetic_operators](/images/C++Primer/arithmetic_operators.png "arithmetic_operators")
+
+由这些运算符及操作数返回结果为右值。
