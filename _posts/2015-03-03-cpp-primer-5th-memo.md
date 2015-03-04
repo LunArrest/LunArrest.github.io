@@ -115,3 +115,57 @@ Advice: Managing Compound Expressions（关于管理复合表达式的建议）�
 ![arithmetic_operators](/images/C++Primer/arithmetic_operators.png "arithmetic_operators")
 
 由这些运算符及操作数返回结果为右值。
+
+一元加运算符返回一个（可能被提升的）它的操作数的拷贝。一元减运算符返回一个（可能被提升的）对其操作数的值的拷贝的求负/求反的结果（The unary minus operator returns the result of negating a (possibly promoted) copy of the value of its operand）
+
+如：
+
+{% highlight C++ %}
+int i = 1024;
+int k = -i; // k = -1024
+bool b = true;
+bool b2 = -b; // b2 is true!
+{% endhighlight %}
+
+**bool类型不应该用于运算。-b的结果就是个很好的需要牢记在心的例子。**
+因为在绝大多数操作符和操作数中，bool类型会被提升（are promoted）为int。在此例子中，bool值为true，当提升为int时，其值为1，求负之后，该值为-1.-1被转化为bool类型并用于b2的初始化。由于初始化器是个非0值，所以初始化为bool值的true，因此，b2的值为true。
+
+**Caution：Overflow and Other Arithmetic Exceptions（注意，溢出和其他运算异常）**
+
+1. 一部分未定义的异常取决于数学的本性（nature of mathematics数学的基本规则），比如：除以0。
+2. 一部分未定义的异常取决于计算机的本性（nature of computers），比如：溢出。当一个值的运算超过该类型能表现的范围时就会发生溢出。
+
+整数与整数之间的除法返回整数。如果其商中包含小数部分，该部分将被截为0（Division between integers returns an integer. If the quotient contains a fractional part, it is truncated toward zero）。
+
+%操作符，作为求余（remainder）或者取模（modulus）操作符。
+
+在除法中，当两个操作数同符号时，其非0商为正，否则反之（otherwise）。早期版本的C++语言允许负数商向上或者向下取整，而在新标准下，它将被截断为0（总觉得不应该这么理解）（Earlier versions of the language permitted a negative quotient to be rounded up or down; the new standard requires the quotient to be rounded toward zero (i.e., truncated)）.
+
+在C++11中(书中原话暂时附上，应为暂时不能很好的理解)：
+The modulus operator is defined so that if m and n are integers and n is nonzero,
+then (m/n)*n + m%n is equal to m. By implication, if m%n is nonzero, it has the same
+sign as m. Earlier versions of the language permitted m%n to have the same sign as n
+on implementations in which negative m/n was rounded away from zero, but such
+implementations are now prohibited. Moreover, except for the obscure case where -m
+overflows, (-m)/n and m/(-n) are always equal to -(m/n), m%(-n) is equal to
+m%n, and (-m)%n is equal to -(m%n). More concretely：
+
+{% highlight C++ %}
+21 % 6; /* result is 3 */ 21 / 6; /* result is 3 */
+21 % 7; /* result is 0 */ 21 / 7; /* result is 3 */
+-21 % -8; /* result is -5 */ -21 / -8; /* result is 2 */
+21 % -5; /* result is 1 */ 21 / -5; /* result is -4 */
+{% endhighlight %}
+
+
+### 4.3. Logical and Relational Operators（逻辑与关系运算）
+
+1. 关系运算符搭配运算或者指针类型的操作数；逻辑运算符搭配所有可以转化为bool类型的操作数（The relational operators take operands of arithmetic or pointer type; the logical operators take operands of any type that can be converted to bool）。
+2. 这些运算符返回bool类型的值（These operators all return values of type bool）。
+3. 0值的运算和指针操作数为false，否则为true。
+4. 这些运算符的操作数都是右值，并且返回的值为右值。
+
+如图：
+
+![logical_relational_operators](/images/C++Primer/logical_relational_operators.png "logical_relational_operators")
+
