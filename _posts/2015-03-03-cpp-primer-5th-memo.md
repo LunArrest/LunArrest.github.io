@@ -169,3 +169,129 @@ m%n, and (-m)%n is equal to -(m%n). More concretely：
 
 ![logical_relational_operators](/images/C++Primer/logical_relational_operators.png "logical_relational_operators")
 
+#### Logical AND and OR Operators(逻辑与/或操作符)
+
+短路求值（short-circuit evaluation）策略:
+
+1. &&右部分仅在其左部为true时才执行（求值）（The right side of an && is evaluated if and only if the left side is true）。
+2. ||右部分尽在其左部为false时才求值（The right side of an || is evaluated if and only if the left side is false）。
+
+#### Logical NOT Operator(逻辑非运算符)
+
+逻辑非运算符返回其操作数真值的求反结果（The logical  NOT operator (!) returns the inverse of the truth value of its operand）。
+
+#### The Relational Operators（关系运算符）
+
+由于关系运算符返回bool值，所以，当连接在一起时，其结果可能会出乎意料：
+
+{% highlight C++ %}
+if (i < j < k) // true if k is greater than 1!
+{% endhighlight %}
+
+如果想达到预期的效果，需要将该表达式重写为：
+
+{% highlight C++ %}
+if (i < j && j < k)
+{% endhighlight %}
+
+#### Equality Tests and the bool Literals（等性判断以及布尔文本）
+
+当我们要检验一个数序对象或者指针的真值时，最直接的方式是使用它的值作为判断条件：
+{% highlight C++ %}
+if (val) { /* ... */ } // true if val is any nonzero value
+if (!val) { /* ... */ } // true if val is zero
+{% endhighlight %}
+
+但，当我们这么写的时候：
+{% highlight C++ %}
+if (val == true) { /* ... */ } // true only if val is equal to 1!
+{% endhighlight %}
+**当val不是bool值时，这个比较的结果可能并不符合我们的预期。**当val不是bool类型时，true会在==判断前被转换为val的类型：
+{% highlight C++ %}
+if (val == 1) { /* ... */ }
+{% endhighlight %}
+
+正如我们所见的这样，bool会被转化成另外的运算类型，false被转为0，true被转为1.
+
+**Warning：我们应该仅当与bool类型的对象比较时使用bool文本（These literals should be used only to compare to an object of type bool）**
+
+### 4.4. Assignment Operators（赋值运算符）
+
+赋值运算符的左手操作数必须是一个可以被改变的左值（The left-hand operand of an assignment operator must be a modifiable lvalue）。
+
+当赋值运算符的左右操作数类型不同时，右手操作符会被转化为左操作符的类型（If the types of the left and right operands differ, the right-hand operand is converted to the type of the left）：
+{% highlight C++ %}
+k = 0; // result: type int, value 0
+k = 3.14159; // result: type int, value 3
+{% endhighlight %}
+
+在C++11的标准中，我们可以在赋值运算符右侧使用被大括号包裹的初始化器列表（Under the new standard, we can use a braced initializer list on the right-hand side）:
+
+{% highlight C++ %}
+k = {3.14}; // error: narrowing conversion
+vector<int> vi; // initially empty
+vi = {0,1,2,3,4,5,6,7,8,9}; // vi now has ten elements, values 0 through 9
+{% endhighlight %}
+
+如果左手操作数为一个内嵌类型，那么其初始化器列表中最多只能包含一个值，并且该值不会被收缩变化（If the left-hand operand is of a built-in type, the initializer list may contain at most one value, and that value must not require a narrowing conversion）。
+
+如果是class类型，那么会发生什么取决于该类的具体细节。
+
+如果忽略左手操作数的类型，初始化器列表可以为空，在这种情况下，编译器会生成一个值初始化的临时对象并将其赋值于左手操作数（Regardless of the type of the left-hand operand, the initializer list may be empty. In this case, the compiler generates a value-initialized temporary and assigns that value to the left-hand operand）。
+
+#### Assignment Is Right Associative（赋值是右相关的）
+
+{% highlight C++ %}
+int ival, jval;
+ival = jval = 0; // ok: each assigned 0
+{% endhighlight %}
+
+多次赋值的对象必须是同样类型的或者是可以转换为同样类型的（Each object in a multiple assignment must have the same type as its right-hand neighbor or a type to which that neighbor can be converted ）。
+
+
+{% highlight C++ %}
+int ival, *pval; // ival is an int; pval is a pointer to int
+ival = pval = 0; // error: cannot assign the value of a pointer to an int
+string s1, s2;
+s1 = s2 = "OK"; // string literal "OK" converted to string
+{% endhighlight %}
+
+#### Assignment Has Low Precedence（赋值优先级低）
+
+经常结合括号将赋值用于条件判断中（Assignments often occur in conditions. Because assignment has relatively low precedence, we usually must parenthesize the assignment for the condition to work properly）：
+
+将：
+{% highlight C++ %}
+// a verbose and therefore more error-prone way to write this loop
+int i = get_value(); // get the first value
+while (i != 42) {
+// do something ...
+i = get_value(); // get remaining values
+}
+{% endhighlight %}
+
+写为：
+{% highlight C++ %}
+int i;
+// a better way to write our loop---what the condition does is now clearer
+while ((i = get_value()) != 42) {
+// do something ...
+}
+{% endhighlight %}
+
+#### Beware of Confusing Equality and Assignment Operators（注意不要弄混等性判断和赋值操作符）
+
+1. if (i = j)，当j为非零值时，该条件为true
+2. if (i == j)，当i和j的值相等时，条件为true
+
+#### Compound Assignment Operators（复合赋值运算符）
+
+分为两种：数学运算操作符（arithmetic operators）和位运算操作符（bitwise operators）：
+
+1. 数学运算操作符：+=  -=  *=  /=  %= 
+2. 位运算操作符：<<=  >>=  &=  ^=  |= 
+
+**当使用复合赋值时，左手操作数只被运算（执行）一次；而常规的赋值，该操作数会被运算（执行）两次：一次在右手边，一次在左手边。（with the exception that, when we use the compound assignment, the left-hand operand is evaluated only once. If we use an ordinary assignment, that operand is evaluated twice: once in the expression on the right-hand side and again as the operand on the left hand）**
+
+### 4.5. Increment and Decrement Operators（自增、自减操作符）
+
