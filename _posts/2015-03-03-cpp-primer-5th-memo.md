@@ -295,3 +295,57 @@ while ((i = get_value()) != 42) {
 
 ### 4.5. Increment and Decrement Operators（自增、自减操作符）
 
+自增、自减运算符提供了简便的给一个对象的值加1或减1的缩略记录法（The increment (++) and decrement (--) operators provide a convenient notational shorthand for adding or subtracting 1 from an object）。
+
+这两种运算符有两种使用格式：前缀式和后缀式（There are two forms of these operators: prefix and postfix）：
+
+1. 前缀式，增、减其操作数，并**返回已经改变的**对象做为其结果（increments (or decrements) its operand and yields the changed object as its result）。
+2. 后缀式，增、减其操作数，但**返回的是改变前的原始的**对象作为其结果（increment (or decrement) the operand but yield a copy of the original,  unchanged value as its result）。
+
+**Advice: Use Postfix Operators only When Necessary(建议：仅当必须的时候使用后缀自增、自减):**
+
+原因很简单：前缀式不需要做一些不必要的操作（avoids unnecessary works）。它只需要增加该值，并返回增加后的结果。但是后缀式就必须要将原始的值存储起来，用以将其作为未增加/减少的值作为结果返回。如果我们不需要未增减的值，我们没有必要让编译、程序做这些事情。对于int或者pointer类型，编译器可能可以优化掉这些多余的操作，但是对于复杂的迭代器对象来说，这些额外的工作可能会占用更多的系统资源（For ints and pointers, the compiler can optimize away this extra work. For more complicated iterator types, this extra work potentially might be more costly.）。
+
+#### Combining Dereference and Increment in a Single Expression（将解引用和自增运算符组合进一条表达式）
+
+{% highlight C++ %}
+auto pbeg = v.begin();
+// print elements up to the first negative value
+while (pbeg != v.end() && *beg >= 0)
+cout << *pbeg++ << endl; // print the current value and advance pbeg
+{% endhighlight %}
+
+由于后缀自增运算符优先级高于解引用运算符，所以*pbeg++等价于*(pbeg++),因为pbeg++返回的是pbeg之前的值的拷贝，所以*解引用的是未增加之前的pbeg的值。
+
+**Advice: Brevity Can Be a Virtue（简短是一种美德）：**
+
+{% highlight C++ %}
+cout << *iter++ << endl;
+{% endhighlight %}
+
+比下面的更冗长的代码要更容易并且更少出错。
+{% highlight C++ %}
+cout << *iter << endl;
+++iter;
+{% endhighlight %}
+
+当熟悉了C++的类似的表达式后，你会发现它们更少出错（Moreover, once these expressions are familiar, you will find them less error-prone）。
+
+
+#### Remember That Operands Can Be Evaluated in Any Order（请牢记，这些操作数可能以任意顺序求值）
+
+{% highlight C++ %}
+for (auto it = s.begin(); it != s.end() && !isspace(*it); ++it)
+	*it = toupper(*it); // capitalize the current character
+{% endhighlight %}
+如此写，合法。
+
+{% highlight C++ %}
+// the behavior of the following loop is undefined!
+while (beg != s.end() && !isspace(*beg))
+	*beg = toupper(*beg++); // error: this assignment is undefined
+{% endhighlight %}
+当改为如上的while循环时，其行为是未定义的。因为“=”的左手操作数和右手操作数中都有改变beg的操作，所以行为是未定义的（both the left-hand right-hand operands to = use beg  and the right-hand operand changes beg）。
+
+### 4.6. The Member Access Operators（成员访问运算符）
+
