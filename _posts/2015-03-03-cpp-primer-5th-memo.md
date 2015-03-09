@@ -347,5 +347,58 @@ while (beg != s.end() && !isspace(*beg))
 {% endhighlight %}
 当改为如上的while循环时，其行为是未定义的。因为“=”的左手操作数和右手操作数中都有改变beg的操作，所以行为是未定义的（both the left-hand right-hand operands to = use beg  and the right-hand operand changes beg）。
 
-### 4.6. The Member Access Operators（成员访问运算符）
+### 4.6. The Member Access Operators（成员访问操作符）
+
+点和箭头操作符用于成员访问。点号从一个类对象中取得成员，箭头用于ptr->mem指针指向内存，同义于：(*ptr).mem。
+
+{% highlight C++ %}
+string s1 = "a string", *p = &s1;
+auto n = s1.size(); // run the size member of the string s1
+n = (*p).size(); // run size on the object to which p points
+n = p->size(); // equivalent to (*p).size()
+{% endhighlight %}
+
+由于解引用操作符(*)的优先级低于点号（.）。所以必须要在解引用的子表达式中用括号括起来。
+
+Exercise 4.20: Assuming that iter is a vector<string>::iterator, indicate which, if any, of the following expressions are legal. Explain the behavior of the legal expressions and why those that aren’t legal are in error.
+
+- (a) *iter++;  可行，iter先++再解引用。
+- (b) (*iter)++; 不可行，iter先解引用为string，string不包含++操作。
+- (c) *iter.empty(); 不可行，先.后*，iter没有empty成员。
+- (d) iter->empty(); 可行，相当于(*iter).empty，先获取vector中的string对象，后判断该对象是否为empty
+- (e) ++*iter; 不可行，先*后++，string没有++操作。
+- (f) iter++->empty(); 可行，先++后->
+
+### 4.7. The Conditional Operator（条件运算符）
+
+条件运算符（?:运算符）使我们可以在一条表达式中使用if-else逻辑（lets us embed simple if-else logic inside an expression）。
+
+cond ? expr1 : expr2;
+
+当条件为true，执行expr1，否者执行expr2（If the condition is true, then  expr1 is evaluated; otherwise,  expr2 is evaluated）.
+
+#### Nesting Conditional Operations（嵌入的条件操作）
+
+如：
+{% highlight C++ %}
+finalgrade = (grade > 90) ? "high pass" : (grade < 60) ? "fail" : "pass";
+{% endhighlight %}
+
+如果grade > 90，返回high pass；如果 grade <= 90，执行:后面的条件运算表达式，如果grade<60返回fail，否则pass。
+
+**Warning（警告）**
+
+Nested conditionals quickly become unreadable（嵌套条件运算符会使程序的可读性变差，尽量少用）. It’s a good idea to nest no more than two or three.
+
+#### Using a Conditional Operator in an Output Expression（在输出表达式中使用条件运算符）
+
+条件运算符的优先级相当低，一般要结合括号来使用。
+
+{% highlight C++ %}
+cout << ((grade < 60) ? "fail" : "pass"); // prints pass or fail
+cout << (grade < 60) ? "fail" : "pass"; // prints 1 or 0!
+cout << grade < 60 ? "fail" : "pass"; // error: compares cout to 60
+{% endhighlight %}
+
+### 4.8. The Bitwise Operators（逐位运算符、位运算符）
 
