@@ -402,3 +402,92 @@ cout << grade < 60 ? "fail" : "pass"; // error: compares cout to 60
 
 ### 4.8. The Bitwise Operators（逐位运算符、位运算符）
 
+逐位运算符将整型操作数用作bit集合。这些运算符可以用与测试或设置单个bit（test and set individual bits）。
+
+这些运算符同样也可以用于叫做“bitset”的可变长的、弹性尺寸的bit集合库类型。
+
+![bitwise_operators](/images/C++Primer/bitwise_operators.png "bitwise_operators")
+
+通常来说，如果一个操作数是一个“小整数”，那么它的值会被扩充到一个更大的整数类型。该操作数可能是有符号的也可能是无符号的。如果该操作数是有符号的并且它的值为负数，那么它的“符号位”保存着一个与机器有关的数值来标志其符号，此外，通过左移改变了一个数的符号位，这种行为是未定义的（If the operand is signed and its value is negative, then the way that the “sign bit” is handled in a number of the bitwise operations is machine dependent. Moreover, doing a left shift that changes the value of the sign bit is undefined.）。
+
+**Warning（警告）：**
+**由于我们没法保证符号位是怎么处理的，我们强烈建议，仅用无符号数作为逐位运算符的操作数（Because there are no guarantees for how the sign bit is handled, we strongly recommend using unsigned types with the bitwise operators.）。**
+
+Bitwise Shift Operators（移位运算符）
+
+左移运算符（<<）将在右侧插入0bit.
+
+右移运算符（>>）的行为取决于其左操作数的类型：
+1. 如果该操作数是无符号类型，则将在其左侧插入0值bit（If that operand is unsigned, then the operator inserts 0-valued bits on the left）。
+1. 如果该操作数是一个有符号类型，则其行为由实现定义（由硬件环境，编译器的实现方式决定），既可能插入符号位的复制，也可能插入0值bit（if it is a signed type, the result is implementation defined—either copies of the sign bit or 0-valued bits are inserted on the left）。
+
+Bitwise NOT Operator（按位非运算符）
+
+按位非运算符将一个操作数的值按位取反，如果是1则变成0，如果是0则变成1（The bitwise  NOT operator (the ~ operator) generates a new value with the bits of its operand inverted. Each 1 bit is set to 0; each 0 bit is set to 1）.
+
+Bitwise  AND ,  OR , and  XOR Operators（按位与、或、异或运算符）
+
+按位与运算符（&），如果两个操作数的某一位都值为1则返回位值1，否则返回0.
+按位或运算符（|），如果两个操作数的某一位的值有一个为1则返回1，否则返回0.
+按位异或运算符（^），如果两个操作数的某一位的值有且仅有一个为1则返回1，否则返回0.
+
+Using Bitwise Operators（使用位运算符）
+
+略
+
+Shift Operators (aka IO Operators) Are Left Associative（位移运算符，又叫做输入输出运算符，是左相关的）
+
+注意以下例子：
+
+{% highlight C++ %}
+cout << 42 + 10; // ok: + has higher precedence, so the sum is printed
+cout << (10 < 42); // ok: parentheses force intended grouping; prints 1
+cout << 10 < 42; // error: attempt to compare cout to 42!
+{% endhighlight %}
+
+### 4.9. The sizeof Operator (sizeof运算符)
+
+sizeof运算符返回一个类型名称或者表达式的以字节为单位的尺寸大小，右相关。（The sizeof operator returns the size, in bytes, of an expression or a type name. The operator is right associative.）。
+
+sizeof返回的结果是一个size_t类型的常量表达式（The result of sizeof is a constant expression of type size_t）。
+
+sizeof运算符有两种书写格式：
+
+1. sizeof (type)
+2. sizeof expr，当使用这种格式时，sizeof返回的是给定表达式的返回结果的类型的大小，并且不同寻常的是，sizeof并不对其操作数进行运算。
+
+例如：
+{% highlight C++ %}
+Sales_data data, *p;
+sizeof(Sales_data); // size required to hold an object of type Sales_data
+sizeof data; // size of data's type, i.e., sizeof(Sales_data)
+sizeof p; // size of a pointer
+sizeof *p; // size of the type to which p points, i.e., sizeof(Sales_data)
+sizeof data.revenue; // size of the type of Sales_data's revenue member
+sizeof Sales_data::revenue; // alternative way to get the size of revenue（在C++11标准下）
+{% endhighlight %}
+
+在C++11标准下：
+
+The result of applying sizeof depends in part on the type involved(sizeof的结果取决于其涉及的类型):
+
+- sizeof char or an expression of type char is guaranteed to be 1（sizeof char 返回1）.
+- sizeof a reference type returns the size of an object of the referenced type（sizeof 引用时，返回该引用对应的对象的类型的大小）.
+- sizeof a pointer returns the size needed hold a pointer（sizeof 指针时返回指针类型的大小）.
+- sizeof a dereferenced pointer returns the size of an object of the type to which the pointer points; the pointer need not be valid（sizeof 解引用的指针时，返回该指针所指的对象的类型的大小，指针不必合法）.
+- sizeof an array is the size of the entire array. It is equivalent to taking the sizeof the element type times the number of elements in the array. Note that sizeof does not convert the array to a pointer（sizeof 一个数组，相当于sizeof整个数组的每个元素的总大小，而不会把它当作一个指针来运算）.
+- sizeof a string or a vector returns only the size of the fixed part of these types; it does not return the size used by the object’s elements（sizeof 一个string或者vector只会返回其固定部分的类型的大小，而不会返回由其元素使用的大小）.
+
+由于sizeof 数组，返回的是整个数组元素的总大小，因此我们可以通过数组大小除以元素大小的方式判断其元素的个数（Because sizeof returns the size of the entire array, we can determine the number of elements in an array by dividing the array size by the element size）。
+
+如：
+{% highlight C++ %}
+// sizeof(ia)/sizeof(*ia) returns the number of elements in ia
+constexpr size_t sz = sizeof(ia)/sizeof(*ia);
+int arr2[sz]; // ok sizeof returns a constant expression 
+{% endhighlight %}
+
+由于sizeof 返回的是一个常量表达式，所以我们可以用其结果来指定数组的维度。
+
+### 4.10. Comma Operator（逗号运算符）
+
