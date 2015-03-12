@@ -491,3 +491,13 @@ int arr2[sz]; // ok sizeof returns a constant expression
 
 ### 4.10. Comma Operator（逗号运算符）
 
+逗号运算符带两个操作数，以从左到右的顺序进行运算（The comma operator takes two operands, which it evaluates from left to right）。 
+
+逗号运算符的左表达式计算后的结果将被丢掉，其结果为其右表达式的值，如果右操作数是个左值，那么它的结果就是个左值（The left-hand expression is evaluated and its result is discarded. The result of a comma expression is the value of its right-hand expression. The result is an lvalue if the right-hand operand is an lvalue）。
+
+### 4.11. Type Conversions（类型转换）
+
+如果两种类型中存在一种转换，那么就称这两个类型是相关的（Two types are related if there is a conversion between them）。
+
+
+
