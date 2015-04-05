@@ -499,5 +499,71 @@ int arr2[sz]; // ok sizeof returns a constant expression
 
 如果两种类型中存在一种转换，那么就称这两个类型是相关的（Two types are related if there is a conversion between them）。
 
+#### 4.11.1. The Arithmetic Conversions（算术转换）
+
+#### 4.11.2. Other Implicit Conversions（其余隐式转换）
+
+#### 4.11.3. Explicit Conversions（显式转换）
+
+转换有如下格式：
+
+cast-name<type>(expression);
+
+cast-name为static_cast, dynamic_cast, const_cast和reinterpret_cast其中之一。
+
+##### static_cast
+
+- static_cast经常用于大的算术类型给小的算术类型赋值。
+- static_cast用于做编译器不会自动进行的转换。
+
+例如：
+
+{% highlight C++ %}
+// cast used to force floating-point division
+double slope = static_cast<double>(j) / i;
+
+void* p = &d; // ok: address of any nonconst object can be stored in a void*
+// ok: converts void* back to the original pointer type
+double *dp = static_cast<double*>(p);
+{% endhighlight %}
 
 
+##### const_cast
+
+- const_cast只能用于改变其操作数的低级const（A const_cast changes only a low-level const in its operand）
+- const_cast将const对象转换为为const对象，就是所说的“casts away the const”
+- 如果对象起初并非const，那我们使用const_cast则是合法的，否则是未定义。
+
+{% highlight C++ %}
+const char *cp;
+// error: static_cast can't cast away const
+char *q = static_cast<char*>(cp);
+static_cast<string>(cp); // ok: converts string literal to string
+const_cast<string>(cp); // error: const_cast only changes constness
+{% endhighlight %}
+
+
+##### reinterpret_cast
+
+
+**Warning**
+
+A reinterpret_cast is inherently machine dependent. Safely using
+reinterpret_cast requires completely understanding the types involved
+as well as the details of how the compiler implements the cast.
+（reinterpret_cast原理取决于机器，安全地使用reinterpret_cast需要我们完全理解编译器进行类型转化的细节）
+
+##### Old-Style Casts
+
+
+{% highlight C++ %}
+type (expr); // function-style cast notation
+(type) expr; // C-language-style cast notation
+{% endhighlight %}
+
+
+#### 4.12. Operator Precedence Table(运算符优先级列表)
+
+![operators_precedence1](/images/C++Primer/operators_precedence1.png "operators_precedence1")
+
+![operators_precedence2](/images/C++Primer/operators_precedence2.png "operators_precedence2")
