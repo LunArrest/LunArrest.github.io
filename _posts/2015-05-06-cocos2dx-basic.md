@@ -238,6 +238,8 @@ on开头表示是一个回调函数。如：void onEnter()
 如图：
 ![cocos2d-x-architecture](/images/Cocos2dx/cocos2d-x-architecture.jpg "cocos2d-x-architecture")
 
+暂未研究过其代码架构，但从图示上看，目前Cocos2dx主要在各个平台的基础上抽象了，视图，音频，物理引擎，脚本四大部分的功能。
+
 ### Cocos2dx目录结构
 
 官方文档给出的目录结构如下（但就目测而言，3.6版本与之几乎完全不一样）：
@@ -261,3 +263,4 @@ on开头表示是一个回调函数。如：void onEnter()
 17. install-templates-xcode.sh	执行该文件安装后，你可以在Xcode中创建空的Cocos2d-x项目。
 
 总而言之，包括了cocos2dx引擎的核心框架目录，用到的第三方开源项目/引擎/库的目录，样例目录，母版目录，工具目录，控制台命令相关工具目录，证书目录等等。
+
