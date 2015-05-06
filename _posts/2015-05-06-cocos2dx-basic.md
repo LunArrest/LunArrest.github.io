@@ -231,3 +231,33 @@ on开头表示是一个回调函数。如：void onEnter()
 2. getProperty() 如果获取的属性并非bool类型的话，用get，否则用is。如getVisibleSize()
 3. isProperty() 如：isDirty()
 
+### Cocos2dx架构和目录结构
+
+#### Cocos2dx架构
+
+如图：
+![cocos2d-x-architecture](/images/Cocos2dx/cocos2d-x-architecture.jpg "cocos2d-x-architecture")
+
+### Cocos2dx目录结构
+
+官方文档给出的目录结构如下（但就目测而言，3.6版本与之几乎完全不一样）：
+
+1. CocosDenshion	音频支持。注意：Android平台中背景音乐和短音效所使用的系统API不同。
+2. cocos2dx	Cocos2d-x框架的主目录。
+3. document	你可以下载doxygen文档系统，利用该系统打开本文档文件夹内的doxygen.config文件，然后再生成离线API文档。
+4. extensions	如果需要更多图形用户界面的控制功能、网络访问、CocosBuilder支持甚至2.5D功能，你可以使用using namespace cocos2d::extension。
+5. external	包括box2d及Chipmunk库。
+6. licenses	cocos2d依赖很多其他开源项目。所有授权许可文件都在这个目录。
+7. samples	重要！这是你该开始用到的文件。从Cpp/HelloCpp开始学习，你会在TestCpp中发现所有类的用法。lua和js样本也在这个目录。
+8. scripting	我知道你不喜欢C++，写起来太复杂。没问题，我们有Lua和Javascript。Scripting文件夹包括来自火狐的lua官方引擎和SpiderMonkey引擎。
+9. template	该目录包括在不同集成开发环境及不同平台中创建Cocos2d-x新项目的模板。这里汇集了数量庞大覆盖各种开发环境和平台的模板！
+10. tools	包括将C++绑定至lua及javascript的脚本文件。
+11. CHANGELOG	作者修订记录文档。
+12. cocos2d-win32.vc2010.sln	配套Visual Studio 2010打开。注意：VS 2008自Cocos2d-x v2.0版本以来就不再支持。
+13. cocos2d-win32.vc2012.sln	配套Visual Studio 2012打开。
+14. create-android-project.bat	在Windows平台运行。具体用法请参考如何用脚本创建Android项目。
+15. create-android-project.sh	在Linux或OS X平台运行。具体用法请参考如何用脚本创建Android项目。
+16. install-templates-msvc.bat	执行该文件安装后，你可以在Visual Studio中创建空的Cocos2d-x项目。
+17. install-templates-xcode.sh	执行该文件安装后，你可以在Xcode中创建空的Cocos2d-x项目。
+
+总而言之，包括了cocos2dx引擎的核心框架目录，用到的第三方开源项目/引擎/库的目录，样例目录，母版目录，工具目录，控制台命令相关工具目录，证书目录等等。
