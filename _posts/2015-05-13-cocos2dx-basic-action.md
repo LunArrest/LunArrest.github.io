@@ -5,6 +5,9 @@ description: cocos2dx Action的基本使用
 tags: cocos2dx
 ---
 
+## 什么是Action
+简单来说就是cocosdx封装好的动画
+
 ## 常用的Action
 
 1. 移动到：CCMoveTo
