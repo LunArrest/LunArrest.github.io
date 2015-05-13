@@ -29,7 +29,7 @@ tags: cocos2dx
 ## 如何使用Action
 
 1. 通过Action类的create创建该动作
-2. 通过精灵控件的runAction来执行该Action
+2. 通过Node的runAction来执行该Action
 3. 可以通过Sequence::create创建按序执行的动作序列，最后传入的参数一定是NULL
 4. 可以同过Spawn::create创建并行执行的动作集合，最后传入的参数一定是NULL
 5. 可以通过Sequence以及CallFunc组合的形式，实现动画播放完毕的回调
