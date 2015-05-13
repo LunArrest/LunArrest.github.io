@@ -27,13 +27,13 @@ tags: cocos2dx
 
 cocos2dx的场景切换通过Director导演来执行，简单的切换就是：
 {% highlight C++ %}
-	auto nextScene = DrawNodeScene::createScene();
-	Director::getInstance()->replaceScene(nextScene);
+auto nextScene = DrawNodeScene::createScene();
+Director::getInstance()->replaceScene(nextScene);
 {% endhighlight %}
 
 加入特效：
 {% highlight C++ %}
-	auto nextScene = DrawNodeScene::createScene();
-	auto transition = TransitionPageTurn::create(1, nextScene, false);
-	Director::getInstance()->replaceScene(transition);
+auto nextScene = DrawNodeScene::createScene();
+auto transition = TransitionPageTurn::create(1, nextScene, false);
+Director::getInstance()->replaceScene(transition);
 {% endhighlight %}

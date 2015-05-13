@@ -105,12 +105,12 @@ bool ActionScene::init() {
 与普通Action使用几乎一样，但是调用的类对象由变为NodeGrid，例如：
 
 {% highlight C++ %}
-	auto logo4 = NodeGrid::create();
-	auto tmp = Sprite::create("logo4.jpg");
-	auto size = tmp->getContentSize();
-	logo4->addChild(tmp);
-	logo4->setPosition(size.width / 2, visibleSize.height - size.height / 2);
-	addChild(logo4);
+auto logo4 = NodeGrid::create();
+auto tmp = Sprite::create("logo4.jpg");
+auto size = tmp->getContentSize();
+logo4->addChild(tmp);
+logo4->setPosition(size.width / 2, visibleSize.height - size.height / 2);
+addChild(logo4);
 
-	logo4->runAction(Shaky3D::create(10, Size(50, 50), 5, false));
+logo4->runAction(Shaky3D::create(10, Size(50, 50), 5, false));
 {% endhighlight %}
