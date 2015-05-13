@@ -82,8 +82,35 @@ bool ActionScene::init() {
 		CCLOG("Action End!");
 	}), NULL));
 
-	;
-
 	return true;
 }
+{% endhighlight %}
+
+## 3D特效Action
+
+1. 抖动效果 - Shaky3D
+2. 波浪效果 - Waves3D
+3. 翻转效果 - FlipX3D
+4. 途径效果 - Lens3D
+5. 水波效果 - Ripple3D
+6. 液体效果 - Liquid
+7. 扭动旋转 - Twirl
+8. 破碎效果 - ShatteredTiles3D
+9. 瓷砖效果 - ShuffleTiles
+10. 淡入淡出 - FadeOutTrTiles 等
+11. 方块消失 - TurnOffTiles
+12. 分行消失 - SplitRows
+13. 翻页效果 - PageTurn3D
+
+与普通Action使用几乎一样，但是调用的类对象由变为NodeGrid，例如：
+
+{% highlight C++ %}
+	auto logo4 = NodeGrid::create();
+	auto tmp = Sprite::create("logo4.jpg");
+	auto size = tmp->getContentSize();
+	logo4->addChild(tmp);
+	logo4->setPosition(size.width / 2, visibleSize.height - size.height / 2);
+	addChild(logo4);
+
+	logo4->runAction(Shaky3D::create(10, Size(50, 50), 5, false));
 {% endhighlight %}
